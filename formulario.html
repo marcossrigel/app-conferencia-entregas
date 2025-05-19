@@ -3,147 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informações Contratuais</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+  <title>Conferência de Entrega</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --color-white: #ffffff;
-      --color-gray: #e3e8ec;
-      --color-dark: #1d2129;
-      --color-blue: #4da6ff;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: var(--color-gray);
-      min-height: 100vh;
+      background-color: #e3e8ec;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 30px 10px;
+      padding: 40px 20px;
+      min-height: 100vh;
     }
+
     .container {
-      background: var(--color-white);
-      padding: 30px 20px;
+      background-color: #fff;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 500px;
       width: 100%;
-      max-width: 900px;
     }
+
     .main-title {
-      font-size: 24px;
-      font-weight: 500;
-      color: #2c2c2c;
+      font-size: 22px;
+      font-weight: bold;
       text-align: center;
-      margin-bottom: 30px;
-      padding: 0 10px;
+      margin-bottom: 20px;
     }
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 10px;
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-size: 15px;
     }
-    th, td {
-      text-align: left;
-      padding: 8px;
-    }
-    .hide-mobile {
-      display: table-cell;
-    }
-    input {
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 15px;
+      box-sizing: border-box;
     }
-    .button-group {
-      margin-top: 30px;
+
+    .row {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      gap: 10px;
+      margin-top: 10px;
     }
-    button {
+
+    .row .col {
+      flex: 1;
+    }
+
+    .diferenca {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .assinatura {
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f8f8f8;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .rodape {
+      font-size: 13px;
+      margin-top: 15px;
+      color: #444;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .button-group button {
       padding: 12px 20px;
-      background-color: var(--color-blue);
-      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #4da6ff;
       border: none;
       border-radius: 10px;
-      font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    button:hover {
+
+    .button-group button:hover {
       background-color: #3399ff;
     }
-    @media (max-width: 600px) {
+
+    .cancelar-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .cancelar-link a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .cancelar-link a:hover {
+      color: darkred;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
       .main-title {
         font-size: 20px;
       }
-      input {
-        font-size: 14px;
+
+      .row {
+        flex-direction: column;
       }
-      table th.hide-mobile {
-        display: none;
-      }
-      table td {
-        display: block;
+
+      .btn-secundario {
         width: 100%;
+        margin: 10px 0 0;
       }
-      table tr {
-        display: block;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
+
+      .assinatura {
+        font-size: 16px;
+      }
+
+      .button-group button {
+        width: 100%;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <form method="post" action="infocontratuais.php">
-      <input type="hidden" name="id_iniciativa" value="">
-      <div class="main-title">Informações Contratuais</div>
-      <table>
-        <tr><th class="hide-mobile">Campo</th><th class="hide-mobile">Valor</th></tr>
-        <tr><td>Processo Licitatório</td><td><input type="text" name="processo_licitatorio" value=""></td></tr>
-        <tr><td>Empresa</td><td><input type="text" name="empresa" value=""></td></tr>
-        <tr><td>Data Assinatura do Contrato</td><td><input type="date" name="data_assinatura_contrato" value=""></td></tr>
-        <tr><td>Data da O.S.</td><td><input type="date" name="dara_os" value=""></td></tr>
-        <tr><td>Prazo de Execução Original</td><td><input type="text" name="prazo_execucao_original" value=""></td></tr>
-        <tr><td>Prazo de Execução Atual</td><td><input type="text" name="prazo_execucao_atual" value=""></td></tr>
-        <tr><td>Valor Inicial da Obra</td><td><input type="text" name="valor_inicial_obra" value=""></td></tr>
-        <tr><td>Valor de Aditivo da Obra</td><td><input type="text" name="valor_aditivo_obra" value=""></td></tr>
-        <tr><td>Valor Total da Obra</td><td><input type="text" name="valor_total_obra" value=""></td></tr>
-        <tr><td>Valor Inicial do Contrato</td><td><input type="text" name="valor_inicial_contrato" value=""></td></tr>
-        <tr><td>Valor do Aditivo</td><td><input type="text" name="valor_aditivo" value=""></td></tr>
-        <tr><td>Valor Total do Contrato</td><td><input type="text" name="valor_contrato" value=""></td></tr>
-        <tr><td>CÓD. DA SUBTRAÇÃO (LOA)</td><td><input type="text" name="cod_subtracao" readonly value=""></td></tr>
-        <tr><td>Secretaria Demandante</td><td><input type="text" name="secretaria_demandante" value=""></td></tr>
-      </table>
+    <div class="main-title">Conferência de Entrega</div>
+    <form method="post" enctype="multipart/form-data" action="formulario.php">
+      <label>Fornecedor</label>
+      <input type="text" name="fornecedor" placeholder="Fornecedor A">
+
+      <label>Produto</label>
+      <input type="text" name="produto" placeholder="123456 Produto Exemplo">
+
+      <label>Quantidade Pedida</label>
+      <input type="number" name="quantidade" placeholder="10">
+
+        <div class="row">
+        <div class="col">
+          <label>Peso da Balança</label>
+          <input type="text" id="peso_balanca" name="peso_balanca" placeholder="8.4 kg">
+        </div>
+        <div class="col">
+          <label>Peso da Etiqueta</label>
+          <input type="text" id="peso_etiqueta" name="peso_etiqueta" placeholder="10 kg">
+        </div>
+      </div>
+
+    <div class="diferenca" id="diferenca_peso">Diferença de peso: </div>
+
+      <label>Divergência</label>
+      <input type="text" name="divergencia" placeholder="Produto avariado">
+
+      <label>Upload de Foto</label>
+      <input type="file" name="foto">
+      <br>
+      <h4 style="margin-top: 10px;">Assinatura Digital</h4>
+      <canvas id="signature-pad" width="280" height="100" style="border:1px solid #ccc; border-radius: 10px;"></canvas>
+      <div style="margin-top: 10px;">
+        <button onclick="clearSignature()" class="btn btn-secondary" style="margin-right: 1px;">Limpar</button>
+        <button onclick="saveSignature()" class="btn">Salvar Assinatura</button>
+      </div>
+
+      <div class="rodape">
+        <span>24/04/2024 16:30</span>
+        <span>51.1041, -0.5870</span>
+      </div>
+
       <div class="button-group">
-        <button type="button" onclick="window.location.href='home.html';" style="background-color:rgb(42, 179, 0);">Salvar</button>
-        <button type="button" onclick="window.location.href='home.html';">&lt; Voltar</button>
+        <button type="submit">Confirmar Entrega</button>
+      </div>
+
+      <div class="cancelar-link">
+        <a href="home.html">Cancelar</a>
       </div>
     </form>
   </div>
-<script>
-function calcularSubtracao() {
-    const valorTotalObra = parseFloat(document.querySelector('input[name="valor_total_obra"]').value.replace(',', '.')) || 0;
-    const valorInicialContrato = parseFloat(document.querySelector('input[name="valor_inicial_contrato"]').value.replace(',', '.')) || 0;
-    const resultado = valorTotalObra - valorInicialContrato;
-    document.querySelector('input[name="cod_subtracao"]').value = resultado.toFixed(2);
-}
 
-document.querySelector('input[name="valor_inicial_obra"]').addEventListener('input', calcularSubtracao);
-document.querySelector('input[name="valor_inicial_contrato"]').addEventListener('input', calcularSubtracao);
-window.addEventListener('load', calcularSubtracao);
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<script>
+  const balancaInput = document.getElementById('peso_balanca');
+  const etiquetaInput = document.getElementById('peso_etiqueta');
+  const diferencaDiv = document.getElementById('diferenca_peso');
+  const canvas = document.getElementById('signature-pad');
+  const signaturePad = new SignaturePad(canvas);
+
+  function clearSignature() {
+    signaturePad.clear();
+  }
+
+  function saveSignature() {
+    if (signaturePad.isEmpty()) {
+      alert("Por favor, assine antes de salvar.");
+    } else {
+      const dataURL = signaturePad.toDataURL();
+      console.log("Assinatura em base64:", dataURL);
+      // Aqui você pode enviar o `dataURL` via AJAX para o backend (PHP, por exemplo) para salvar como imagem
+    }
+  }
+
+  function calcularDiferenca() {
+    const pesoBalanca = parseFloat(balancaInput.value.replace(',', '.')) || 0;
+    const pesoEtiqueta = parseFloat(etiquetaInput.value.replace(',', '.')) || 0;
+    const diferenca = (pesoEtiqueta - pesoBalanca).toFixed(2);
+    diferencaDiv.textContent = `Diferença de peso: ${diferenca} kg`;
+    diferencaDiv.style.color = diferenca < 0 ? 'red' : 'green';
+  }
+
+  balancaInput.addEventListener('input', calcularDiferenca);
+  etiquetaInput.addEventListener('input', calcularDiferenca);
 </script>
+
 </body>
 </html>
